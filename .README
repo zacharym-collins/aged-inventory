@@ -48,16 +48,36 @@ The proect require the following environment variables, sotred in a .env file in
 ```
 ENV VARIABLES HERE
 ```
-Ensure sensitive information like credentials is kept secure.
+Ensure sensitive information like credentials is kept secure. Automating the Tableau download will require changes to the `tableau_automation.py` file, as the program was written to run on the author's machine. You can set `TABLEAU_DOWNLOAD="False"` in the `.env` file to skip this part of the code if you choose to download the Tableau workbook data manually. Ensure that ALL paths are set correctly before proceeding. 
 
 ## Usage
-Usage here
+1. Create a `.env` file before running any portion of the program (see [Environment Variables](#environment-variables)).
+2. Navigate to the `aged-inventory` directory via your terminal or shell of choice.
+3. Run `python main.py` to begin the automation. Assumes that all directories are correctly set in the `.env` file.
 
 ## Project Structure
-Structure here
+```
+aged-inventory/
+|
+|-data/
+|-logs/
+|-modules/
+|    |-file_utils.py
+|    |-inventory_processing.py
+|    |-sap_automation.py
+|    |-tableau_automation.py
+|-.env
+|-.gitignore
+|-.README
+|-LICENSE.txt
+|-main.py
+|-requirements.txt
+|-shift_schedules.txt
+```
 
 ## Future Enhancements
-Enhancements here
+- Explore predictive analysis for inventory optimization
+- Extend integration to other manufacturing systems.
 
 ## License
 This project is licensed under the [MIT License](./LICENSE.txt).
