@@ -28,7 +28,7 @@ def copy_and_rename_files() -> None:
     try:
         # Copy and rename "Paint Processed.csv"
         src = os.path.join(downloads_path, paint_processed_file)
-        dest = os.path.join(base_directory, 'data/paint_processed.csv')
+        dest = os.path.join(base_directory, r'data\paint_processed.csv')
         shutil.copy(src, dest)
         logger.info(f"Successfully copied '{paint_processed_file}' to '{dest}'.")
 
@@ -148,9 +148,6 @@ def get_work_days(parameters: Dict[str, object]) -> List[int]:
     try:
         if parameters.get('include_saturday', False):
             work_days.append(5)  # Add Saturday to work days
-            logger.info("Saturday included as a work day.")
-        else:
-            logger.info("Saturday not included as a work day.")
     except Exception as e:
         logger.error(f"An error occurred while determining work days: {e}", exc_info=True)
 
