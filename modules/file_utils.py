@@ -1,7 +1,7 @@
 import os
 import shutil
 import logging
-from typing import Dict, List, Tuple, Union
+from typing import Dict, List, Tuple, Optional
 from openpyxl.styles import PatternFill, Font, Border, Side, NamedStyle
 import pandas as pd
 from pandas import DataFrame
@@ -226,3 +226,63 @@ def save_to_excel(df: DataFrame, filename: str) -> None:
 
     except Exception as e:
         logger.error("An error occurred while saving the Excel file: %s", e, exc_info=True)
+
+def move_to_sharepoint(
+    source_dir: Optional[str] = None,
+    dest_dir: Optional[str] = None,
+    files_to_move: Optional[List[str]] = None
+) -> None:
+    """
+    Moves specified files from the source directory to the destination SharePoint directory.
+
+    Args:
+        source_dir (Optional[str]): The source directory where the files are located.
+                                    If None, defaults to '<current working directory>/data'.
+        dest_dir (Optional[str]): The destination directory (SharePoint path) where the files should be moved.
+                                  This parameter must be provided.
+        files_to_move (Optional[List[str]]): List of file names to move. If None, defaults to 
+                                             ['aged_load_inv.xlsx', 'aged_unload_inv.xlsx'].
+
+    Raises:
+        ValueError: If the destination directory is not provided.
+        FileNotFoundError: If a specified file is not found in the source directory.
+        Exception: For any other errors that occur during the file moving process.
+    """
+    try:
+        # Set default values
+        if source_dir is None:
+            source_dir = os.path.join(os.getcwd(), 'data')
+            logger.debug(f"Source directory not provided. Defaulting to {source_dir}.")
+
+        if dest_dir is None:
+            raise ValueError("Destination directory must be provided.")
+        
+        if files_to_move is None:
+            files_to_move = ['aged_load_inv.xlsx', 'aged_unload_inv.xlsx']
+            logger.debug(f"Files to move not specified. Defaulting to {files_to_move}.")
+
+        # Ensure source directory exists
+        if not os.path.exists(source_dir):
+            raise FileNotFoundError(f"Source directory '{source_dir}' does not exist.")
+
+        # Ensure destination directory exists
+        if not os.path.exists(dest_dir):
+            raise FileNotFoundError(f"Destination directory '{dest_dir}' does not exist.")
+
+        # Move each file
+        for file_name in files_to_move:
+            src = os.path.join(source_dir, file_name)
+            dst = os.path.join(dest_dir, file_name)
+            try:
+                shutil.copy(src, dst)
+                logger.info(f"Successfully moved '{file_name}' from '{source_dir}' to '{dest_dir}'.")
+            except FileNotFoundError:
+                logger.error(f"File '{file_name}' not found in source directory '{source_dir}'.", exc_info=True)
+                raise
+            except Exception as e:
+                logger.error(f"Error moving file '{file_name}' from '{source_dir}' to '{dest_dir}': {e}", exc_info=True)
+                raise
+
+    except Exception as e:
+        logger.critical(f"Critical error in move_to_sharepoint: {e}", exc_info=True)
+        raise
