@@ -111,22 +111,22 @@ def get_work_shifts(parameters: Dict[str, object]) -> List[Tuple[int, int, int, 
             if first_hours == 8:
                 shifts.append((5, 0, 11, 0))  # First shift morning
                 shifts.append((11, 30, 13, 30))  # First shift noon
-                logger.info("Configured first shift for 8 hours.")
+                #logger.info("Configured first shift for 8 hours.")
             elif first_hours == 10:
                 shifts.append((5, 0, 11, 0))  # First shift morning
                 shifts.append((11, 30, 15, 30))  # First shift extended noon
-                logger.info("Configured first shift for 10 hours.")
+                #logger.info("Configured first shift for 10 hours.")
         
         if parameters.get('second_shift', True):
             second_hours = int(parameters.get('second_hours', 8))
             if second_hours == 8:
                 shifts.append((20, 30, 0, 30))  # Second shift evening
                 shifts.append((1, 0, 5, 0))  # Second shift night
-                logger.info("Configured second shift for 8 hours.")
+                #logger.info("Configured second shift for 8 hours.")
             elif second_hours == 10:
                 shifts.append((18, 30, 0, 30))  # Second shift extended evening
                 shifts.append((1, 0, 5, 0))  # Second shift night
-                logger.info("Configured second shift for 10 hours.")
+                #logger.info("Configured second shift for 10 hours.")
     except Exception as e:
         logger.error(f"An error occurred while determining work shifts: {e}", exc_info=True)
     
@@ -148,6 +148,10 @@ def get_work_days(parameters: Dict[str, object]) -> List[int]:
     try:
         if parameters.get('include_saturday', False):
             work_days.append(5)  # Add Saturday to work days
+            #logger.info("Saturday included as a work day.")
+        else:
+            #logger.info("Saturday not included as a work day.")
+            pass
     except Exception as e:
         logger.error(f"An error occurred while determining work days: {e}", exc_info=True)
 
