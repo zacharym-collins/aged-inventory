@@ -56,7 +56,7 @@ def compute_elapsed_hours(row: pd.Series) -> float:
         float: The number of hours the material has been in storage.
     """
     try:
-        logger.debug(f"Computing elapsed hours for material: {row['Material']}")
+        #logger.debug(f"Computing elapsed hours for material: {row['Material']}")
 
         # Get work shifts and work days based on parameters
         parameters = read_shift_parameters()
@@ -69,7 +69,7 @@ def compute_elapsed_hours(row: pd.Series) -> float:
 
         # Calculate elapsed hours
         elapsed_hours = calculate_elapsed_hours(last_placement, now, work_shifts, work_days)
-        logger.debug(f"Elapsed hours for material {row['Material']}: {elapsed_hours:.2f} hours")
+        #logger.debug(f"Elapsed hours for material {row['Material']}: {elapsed_hours:.2f} hours")
 
         return round(elapsed_hours, 2)
 

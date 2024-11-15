@@ -69,7 +69,7 @@ def read_shift_parameters(filename: str = 'shift_schedules.txt') -> Dict[str, ob
     try:
         with open(filename, 'r') as file:
             lines = file.readlines()
-        logger.info(f"Successfully read shift parameters from '{filename}'.")
+        #logger.info(f"Successfully read shift parameters from '{filename}'.")
 
         for line in lines:
             if line.strip() and not line.strip().startswith('#'):
