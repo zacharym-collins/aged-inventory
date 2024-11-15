@@ -1,0 +1,6 @@
+# Shift parameters
+first_shift=True
+first_hours=8
+second_shift=False
+second_hours=8
+include_saturday=False
