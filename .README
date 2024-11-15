@@ -46,7 +46,17 @@ pip install -r requirements.txt
 ## Environment Variables
 The proect require the following environment variables, sotred in a .env file in the root directory (not tracked by Git for security). Create a `.env` file as follows:
 ```
-ENV VARIABLES HERE
+# .env
+DOWNLOAD_TABLEAU="False" # "True" will enable main.py to attempt GUI browser automation, not reccemonded
+TABLEAU_URL="your-tableau-url-here"
+TABLEAU_USERNAME="your-tableau-username-here"
+TABLEAU_PASSWORD="your-tableau-password-here"
+WORKBOOK_URL="specific-url-for-workbook-here"
+DOWNLOADS_PATH="C:\Users\example\Downloads"
+SAP_GUI_PATH="C:\Users\example\Documents\SAP\SAP GUI"
+BASE_DIRECTORY = "C:\Users\example\aged-inventory"
+STOCK_TRANSACTION="AB12" # Specific SAP transaction for stock data, AB12 is not a real transaction
+SHAREPOINT_DIRECTORY="C:\Users\example\my-linked-sharepoint-directory"
 ```
 Ensure sensitive information like credentials is kept secure. Automating the Tableau download will require changes to the `tableau_automation.py` file, as the program was written to run on the author's machine. You can set `TABLEAU_DOWNLOAD="False"` in the `.env` file to skip this part of the code if you choose to download the Tableau workbook data manually. Ensure that ALL paths are set correctly before proceeding. 
 
