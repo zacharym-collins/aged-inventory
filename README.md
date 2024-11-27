@@ -1,4 +1,4 @@
-# Inventory Managemnt and Reporting Automation
+# Inventory Management and Reporting Automation
 This project automates the retrieval, processing, and reporting of paint inventory data for manufacturing operations. It integrates data from Tableau, SAP, and local file systems to streamline workflows, improve accuracy, and save time. This repository is incomplete and is a work in progress.
 
 ## Table of Contents
