@@ -44,7 +44,7 @@ pip install -r requirements.txt
 3. Set up environment variables (see [Environment Variables](#environment-variables))
 
 ## Environment Variables
-The proect require the following environment variables, sotred in a .env file in the root directory (not tracked by Git for security). Create a `.env` file as follows:
+The project requires the following environment variables, stored in a .env file in the root directory (not tracked by Git for security). Create a `.env` file as follows:
 ```
 # .env
 DOWNLOAD_TABLEAU="False" # "True" will enable main.py to attempt GUI browser automation, not reccemonded
