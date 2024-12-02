@@ -95,7 +95,7 @@ This project is licensed under the [MIT License](./LICENSE.txt).
 ## Customization and Setup
 
 ### Environment-Specific Automation
-This project automates specific tasks tailored to the author's machine. Although many of the functions could be replaced with a more reliable method than those implemented with `pyautogui`, certain security restrictions and safety measure dictate that this is the most efficient way to retrieve the data on the author's machine. Scripts such as `tableau_automation.py` depend on:
+This project automates specific tasks tailored to the author's machine. Although many of the functions could be replaced with a more reliable method than those implemented with `pyautogui`, certain security restrictions and safety measures dictate that this is the most efficient way to retrieve the data on the author's machine. Scripts such as `tableau_automation.py` depend on:
 - GUI automation with hardcoded screen coordinates that match the author's screen resolution.
 - Specific file paths and directory structures unique to the author's environment.
 
@@ -105,7 +105,7 @@ To adapt these scripts for your use, you may need to:
 - Ensure required software is installed and accessible.
 
 ### Sensitive Information Exclusion
-Sensitive information, such as credentials and internal URLs, has been removed and replaced with environment variable placeholders. You must create a `.env` file as described in the **Setup** section to provide necessary values.
+Sensitive information, such as credentials and internal URLs, has been removed and replaced with environment variable placeholders. You must create a `.env` file as described in the [Environment Variables](#environment-variables) section to provide necessary values.
 
 ### Limitations
 This project is an example of automating specific workflows and may not work "as-is" in other environments without customization.
