@@ -29,10 +29,11 @@ def main():
     copy_and_rename_files()
 
     # Initialize the paint load and unload DataFrames
-    aged_load_inv, aged_unload_inv = process_inventory_data()
+    aged_load_inv, aged_unload_inv, aged_8qi_inv = process_inventory_data()
     # Save each filtered DataFrame to an Excel file
     save_to_excel(aged_load_inv, r'data\aged_load_inv.xlsx')
     save_to_excel(aged_unload_inv, r'data\aged_unload_inv.xlsx')
+    save_to_excel(aged_8qi_inv, r'data\aged_8qi_inv.xlsx')
 
     move_to_sharepoint(dest_dir=os.getenv("SHAREPOINT_DIRECTORY"))
 

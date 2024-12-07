@@ -231,7 +231,7 @@ def move_to_sharepoint(
     source_dir: Optional[str] = None,
     dest_dir: Optional[str] = None,
     files_to_move: Optional[List[str]] = None
-) -> None:
+        ) -> None:
     """
     Moves specified files from the source directory to the destination SharePoint directory.
 
@@ -258,7 +258,7 @@ def move_to_sharepoint(
             raise ValueError("Destination directory must be provided.")
         
         if files_to_move is None:
-            files_to_move = ['aged_load_inv.xlsx', 'aged_unload_inv.xlsx']
+            files_to_move = ['aged_load_inv.xlsx', 'aged_unload_inv.xlsx', 'aged_8qi_inv.xlsx']
             logger.debug(f"Files to move not specified. Defaulting to {files_to_move}.")
 
         # Ensure source directory exists

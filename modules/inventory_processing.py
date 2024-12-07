@@ -105,6 +105,9 @@ def process_inventory_data() -> Tuple[pd.DataFrame, pd.DataFrame]:
         # Only show data that is in location for more than 4 working hours
         aged_unload_inv = df[(df['Storage Bin'].isin(unload_bins)) & (df['hours_elapsed'] >= 4)]
 
+        # Filter data for aged 8QI inventory
+        aged_8qi_inv = df[df['Storage Type'].isin(["8QI"])]
+
         # Load the Paint Processed CSV file
         paint_df = pd.read_csv(r'data\paint_processed.csv', encoding='utf-16', sep='\t')
 
@@ -127,7 +130,7 @@ def process_inventory_data() -> Tuple[pd.DataFrame, pd.DataFrame]:
 
         logger.info("Inventory data processing complete.")
 
-        return aged_load_inv, aged_unload_inv
+        return aged_load_inv, aged_unload_inv, aged_8qi_inv
 
     except Exception as e:
         logger.error(f"Error processing inventory data: {e}", exc_info=True)
