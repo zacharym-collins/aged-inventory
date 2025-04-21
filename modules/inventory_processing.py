@@ -98,7 +98,7 @@ def process_inventory_data() -> Tuple[pd.DataFrame, pd.DataFrame]:
 
         # Filter data for aged load inventory
         # Only show data that is in location for more than 4 working hours
-        aged_load_inv = df[(df['Storage Type'].isin([800, 801, 802])) & (df['hours_elapsed'] >= 4)]
+        aged_load_inv = df[(df['Storage Type'].isin(['800', '801', '802'])) & (df['hours_elapsed'] >= 4)]
 
         # Filter data for aged unload inventory
         unload_bins = ["UNLOAD01", "UNLOAD02", "UNLOAD03", "UNLOAD04", "UNLOAD05", "LGUNLOAD"]
